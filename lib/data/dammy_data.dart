@@ -3,7 +3,7 @@ import 'package:cod3r_shop/providers/product.dart';
 final DUMMY_PRODUCTS = [
   Product(
     id: 'p1',
-    title: 'Red Shirt',
+    title: "Red Shirt",
     description: 'A red shirt - it is pretty red!',
     price: 29.99,
     imageUrl:
