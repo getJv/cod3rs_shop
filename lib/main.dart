@@ -1,4 +1,5 @@
 import 'package:cod3r_shop/providers/cart_provider.dart';
+import 'package:cod3r_shop/providers/orders.dart';
 import 'package:cod3r_shop/providers/product_provider.dart';
 import 'package:cod3r_shop/utils/app_routes.dart';
 import 'package:cod3r_shop/views/cart_screen.dart';
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => CartProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => Orders(),
+        )
       ],
       child: MaterialApp(
         title: 'Minha Loja',
