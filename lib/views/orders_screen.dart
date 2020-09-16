@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../widgets/app_drawer.dart';
 import '../providers/orders.dart';
+import '../widgets/order_widget.dart';
 
 class OrdersScreens extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     final Orders orders = Provider.of(context);
@@ -17,7 +17,8 @@ class OrdersScreens extends StatelessWidget {
       drawer: AppDrawer(),
       body: ListView.builder(
         itemCount: orders.itemsCount,
-        itemBuilder: (ctx,i) => Text(orders.items[i].total.toString()),),
+        itemBuilder: (ctx, i) => OrderWidget( order: orders.items[i] ),
+      ),
     );
   }
 }
