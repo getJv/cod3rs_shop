@@ -9,7 +9,11 @@ class ProductsProvider with ChangeNotifier {
 
   // gera uma nova lista com o spreadOperator
   List<Product> get items => [..._items];
-  
+
+  int get itemsCount {
+    return _items.length;
+  }
+
   List<Product> get favoriteItems =>
       _items.where((prod) => prod.isFavorite).toList();
 

@@ -5,7 +5,9 @@ import 'package:cod3r_shop/utils/app_routes.dart';
 import 'package:cod3r_shop/views/cart_screen.dart';
 import 'package:cod3r_shop/views/orders_screen.dart';
 import 'package:cod3r_shop/views/product_detail_screen.dart';
+import 'package:cod3r_shop/views/product_form_screen.dart';
 import 'package:cod3r_shop/views/products_overview_screen.dart';
+import 'package:cod3r_shop/views/products_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -40,6 +42,8 @@ class MyApp extends StatelessWidget {
           AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailScreen(),
           AppRoutes.CART: (ctx) => CartScreen(),
           AppRoutes.ORDERS: (ctx) => OrdersScreens(),
+          AppRoutes.PRODUCTS: (ctx) => ProductsScreen(),
+          AppRoutes.PRODUCT_FORM: (ctx) => ProductFormScreen(),
         },
       ),
     );
