@@ -1,4 +1,8 @@
+import 'dart:js';
+
+import 'package:cod3r_shop/providers/product_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../providers/product.dart';
 import '../utils/app_routes.dart';
 
@@ -31,7 +35,31 @@ class ProductItem extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.delete),
               color: Theme.of(context).errorColor,
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (ctx) => AlertDialog(
+                    title: Text('Olha a merda...'),
+                    content: Text('Vai deleter mesmo cabeça?'),
+                    actions: [
+                      FlatButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Não')),
+                      FlatButton(
+                          onPressed: () {
+                            Provider.of<ProductsProvider>(
+                              context,
+                              listen: false,
+                            ).deleteProduct(product.id);
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Sim')),
+                    ],
+                  ),
+                );
+              },
             ),
           ],
         ),
