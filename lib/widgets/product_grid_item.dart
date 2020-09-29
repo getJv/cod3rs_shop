@@ -10,6 +10,7 @@ class ProductGridItem extends StatelessWidget {
     //listen = false, finforma ao fluter para nao criar um listener para acompanhar atualizações
     final Product product = Provider.of<Product>(context, listen: false);
     final CartProvider cart = Provider.of<CartProvider>(context, listen: false);
+    print(product.imageUrl);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
