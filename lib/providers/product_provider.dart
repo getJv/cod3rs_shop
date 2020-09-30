@@ -1,8 +1,10 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:cod3r_shop/data/dammy_data.dart';
 import 'package:cod3r_shop/providers/product.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 class ProductsProvider with ChangeNotifier {
   List<Product> _items = DUMMY_PRODUCTS;
@@ -20,6 +22,19 @@ class ProductsProvider with ChangeNotifier {
       _items.where((prod) => prod.isFavorite).toList();
 
   void addProduct(Product newProduct) {
+    const url = 'https://general-api-d2532.firebaseio.com/products.json';
+    post(
+      url,
+      body: json.encode({
+        'id': Random().nextDouble().toString(),
+        'title': newProduct.title,
+        'description': newProduct.description,
+        'price': newProduct.price,
+        'imageUrl': newProduct.imageUrl,
+        'isFavorite': newProduct.isFavorite,
+      }),
+    );
+
     _items.add(
       Product(
         id: Random().nextDouble().toString(),
