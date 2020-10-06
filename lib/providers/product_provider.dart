@@ -21,9 +21,10 @@ class ProductsProvider with ChangeNotifier {
   List<Product> get favoriteItems =>
       _items.where((prod) => prod.isFavorite).toList();
 
-  void addProduct(Product newProduct) {
-    const url = 'https://general-api-d2532.firebaseio.com/products.json';
-    post(
+  Future<void> addProduct(Product newProduct) async {
+    const url = 'https://general-api-d2532.firebaseio.com/products';
+
+    final response = await post(
       url,
       body: json.encode({
         'id': Random().nextDouble().toString(),
@@ -35,15 +36,14 @@ class ProductsProvider with ChangeNotifier {
       }),
     );
 
-    _items.add(
-      Product(
-        id: Random().nextDouble().toString(),
-        title: newProduct.title,
-        description: newProduct.description,
-        price: newProduct.price,
-        imageUrl: newProduct.imageUrl,
-      ),
-    );
+    _items.add(Product(
+      id: json.decode(response.body)["name"],
+      title: newProduct.title,
+      description: newProduct.description,
+      price: newProduct.price,
+      imageUrl: newProduct.imageUrl,
+    ));
+
     notifyListeners();
   }
 
